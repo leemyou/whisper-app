@@ -1,23 +1,28 @@
-const mainColorLight = "#FC796A";
-const subColorLight = "#EFBFBB";
-const mainColorDark = "#E76B5C";
-const subColorDark = "#844740";
-
 export const Colors = {
   light: {
     text: "#29292C",
+    grey600: "#3F3E48",
+    grey400: "#72717C",
+    grey100: "#BAB9C5",
     background: "#FAF5F5",
-    tint: mainColorLight,
-    icon: "#687076",
+    tint: "#FC796A",
+    main: "#FC796A",
+    sub: "#EFBFBB",
+    icon: "#72717C",
     tabIconDefault: "#3F3E48",
-    tabIconSelected: mainColorLight,
+    tabIconSelected: "#FC796A",
   },
   dark: {
     text: "#ECEDEE",
+    grey600: "#DADAE4",
+    grey400: "#84838C",
+    grey100: "#424249",
     background: "#151718",
-    tint: mainColorDark,
-    icon: "#9BA1A6",
-    tabIconDefault: "#9BA1A6",
-    tabIconSelected: mainColorDark,
+    tint: "#E76B5C",
+    main: "#E76B5C",
+    sub: "#844740",
+    icon: "#84838C",
+    tabIconDefault: "#DADAE4",
+    tabIconSelected: "#E76B5C",
   },
 };
