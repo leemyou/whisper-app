@@ -3,19 +3,19 @@ import { StyleSheet, Text, type TextProps } from "react-native";
 import { useThemeColor } from "@/hooks/useThemeColor";
 import { Colors } from "@/constants/Colors";
 
-type BasicTextProps = TextProps & {
+export type BasicTextInputProps = TextProps & {
   size?: "caption" | "footnote" | "default" | "subTitle" | "title";
   color?: keyof typeof Colors.light & keyof typeof Colors.dark;
   weight?: "regular" | "bold" | "light";
 };
 
-export const BasicText = ({
+export const BasicTextInput = ({
   style,
   color = "text",
   size = "default",
   weight = "regular",
   ...rest
-}: BasicTextProps) => {
+}: BasicTextInputProps) => {
   const textColor = useThemeColor(color);
 
   return (
