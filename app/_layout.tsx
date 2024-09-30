@@ -18,6 +18,8 @@ export default function RootLayout() {
   const colorScheme = useColorScheme();
   const [loaded] = useFonts({
     NanumSquare: require("../assets/fonts/NanumSquareRoundR.ttf"),
+    NanumSquareBold: require("../assets/fonts/NanumSquareRoundB.ttf"),
+    NanumSquareLight: require("../assets/fonts/NanumSquareRoundL.ttf"),
   });
 
   useEffect(() => {

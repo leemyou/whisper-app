@@ -4,20 +4,16 @@ import { useThemeColor } from "@/hooks/useThemeColor";
 import { Colors } from "@/constants/Colors";
 
 type BasicTextProps = TextProps & {
-  type?:
-    | "default"
-    | "defaultBold"
-    | "caption"
-    | "footnote"
-    | "subTitle"
-    | "title";
+  size?: "caption" | "footnote" | "default" | "subTitle" | "title";
   color?: keyof typeof Colors.light & keyof typeof Colors.dark;
+  weight?: "regular" | "bold" | "light";
 };
 
 export const BasicText = ({
   style,
-  type = "default",
   color = "text",
+  size = "default",
+  weight = "regular",
   ...rest
 }: BasicTextProps) => {
   const textColor = useThemeColor(color);
@@ -25,14 +21,15 @@ export const BasicText = ({
   return (
     <Text
       style={[
-        { fontFamily: "NanumSquare" },
         { color: textColor },
-        type === "default" ? textStyle.default : undefined,
-        type === "defaultBold" ? textStyle.defaultBold : undefined,
-        type === "caption" ? textStyle.caption : undefined,
-        type === "footnote" ? textStyle.footnote : undefined,
-        type === "subTitle" ? textStyle.subTitle : undefined,
-        type === "title" ? textStyle.title : undefined,
+        size === "default" ? textStyle.default : undefined,
+        size === "caption" ? textStyle.caption : undefined,
+        size === "footnote" ? textStyle.footnote : undefined,
+        size === "subTitle" ? textStyle.subTitle : undefined,
+        size === "title" ? textStyle.title : undefined,
+        weight === "regular" ? textStyle.fontRegular : undefined,
+        weight === "light" ? textStyle.fontLight : undefined,
+        weight === "bold" ? textStyle.fontBold : undefined,
         style,
       ]}
       {...rest}
@@ -48,7 +45,6 @@ const textStyle = StyleSheet.create({
   defaultBold: {
     fontSize: 16,
     lineHeight: 24,
-    fontWeight: "600",
   },
   caption: {
     fontSize: 12,
@@ -65,6 +61,15 @@ const textStyle = StyleSheet.create({
   title: {
     fontSize: 28,
     lineHeight: 32,
-    fontWeight: "bold",
+  },
+
+  fontRegular: {
+    fontFamily: "NanumSquare",
+  },
+  fontBold: {
+    fontFamily: "NanumSquareBold",
+  },
+  fontLight: {
+    fontFamily: "NanumSquareLight",
   },
 });
