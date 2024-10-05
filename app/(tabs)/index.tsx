@@ -5,6 +5,7 @@ import { BasicTextInput } from "@/components/inputs/BasicTextInput";
 import { TextButton } from "@/components/buttons/TextButton";
 import { IconButton } from "@/components/buttons/IconButton";
 import { ArrowButton } from "@/components/buttons/ArrowButton";
+import { DatePicker } from "@/components/datePickers/DatePicker";
 
 export default function HomeScreen() {
   const testPressBtn = () => {
@@ -30,6 +31,7 @@ export default function HomeScreen() {
         iconSrc={require("@/assets/images/react-logo.png")}
       />
       <ArrowButton title="test`123" />
+      <DatePicker />
 
       {/* <ThemedView style={styles.titleContainer}>
         <ThemedText type="title">Welcome!</ThemedText>
