@@ -3,15 +3,15 @@ import { Pressable, PressableProps, StyleSheet } from "react-native";
 import { BasicTextInput } from "../inputs/BasicTextInput";
 import { useThemeColor } from "@/hooks/useThemeColor";
 
-type BasicTextButtonProps = Omit<PressableProps, "children"> & {
+type TextButtonProps = Omit<PressableProps, "children"> & {
   children: ReactNode;
 };
 
-export const BasicTextButton = ({
+export const TextButton = ({
   children,
   disabled,
   ...rest
-}: BasicTextButtonProps) => {
+}: TextButtonProps) => {
   const backgroundColor = useThemeColor(disabled ? "sub" : "main");
 
   return (
