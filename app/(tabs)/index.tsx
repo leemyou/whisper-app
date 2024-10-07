@@ -7,6 +7,7 @@ import { IconButton } from "@/components/buttons/IconButton";
 import { ArrowButton } from "@/components/buttons/ArrowButton";
 import { DatePicker } from "@/components/datePickers/DatePicker";
 import { useState } from "react";
+import { MonthYearPicker } from "@/components/datePickers/MonthPicker";
 
 export default function HomeScreen() {
   const [pickerVisible, setPickerVisible] = useState(false);
@@ -34,7 +35,8 @@ export default function HomeScreen() {
         iconSrc={require("@/assets/images/react-logo.png")}
       />
       <ArrowButton title="test`123" onPress={() => setPickerVisible(true)} />
-      <DatePicker visible={pickerVisible} setVisible={setPickerVisible} />
+      {/* <DatePicker visible={pickerVisible} setVisible={setPickerVisible} /> */}
+      <MonthYearPicker visible={pickerVisible} setVisible={setPickerVisible} />
 
       {/* <ThemedView style={styles.titleContainer}>
         <ThemedText type="title">Welcome!</ThemedText>

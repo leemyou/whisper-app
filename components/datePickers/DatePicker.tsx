@@ -67,7 +67,7 @@ export const DatePicker = ({
             value={date}
             display="spinner"
             locale="ko"
-            style={{ height: 220 }}
+            style={styles.picker}
             onChange={(param) => setDate(new Date(param.nativeEvent.timestamp))}
           />
         </View>
@@ -106,5 +106,9 @@ const styles = StyleSheet.create({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
+  },
+  picker: {
+    height: 220,
+    width: "100%",
   },
 });
