@@ -5,8 +5,13 @@ import { BasicTextInput } from "@/components/inputs/BasicTextInput";
 import { TextButton } from "@/components/buttons/TextButton";
 import { IconButton } from "@/components/buttons/IconButton";
 import { ArrowButton } from "@/components/buttons/ArrowButton";
+import { DatePicker } from "@/components/datePickers/DatePicker";
+import { useState } from "react";
+import { MonthYearPicker } from "@/components/datePickers/MonthPicker";
 
 export default function HomeScreen() {
+  const [pickerVisible, setPickerVisible] = useState(false);
+
   const testPressBtn = () => {
     alert("click!");
   };
@@ -29,7 +34,9 @@ export default function HomeScreen() {
         onPress={testPressBtn}
         iconSrc={require("@/assets/images/react-logo.png")}
       />
-      <ArrowButton title="test`123" />
+      <ArrowButton title="test`123" onPress={() => setPickerVisible(true)} />
+      {/* <DatePicker visible={pickerVisible} setVisible={setPickerVisible} /> */}
+      <MonthYearPicker visible={pickerVisible} setVisible={setPickerVisible} />
 
       {/* <ThemedView style={styles.titleContainer}>
         <ThemedText type="title">Welcome!</ThemedText>
