@@ -14,23 +14,24 @@ import dayjs from "dayjs";
 
 type DatePickerProps = Omit<ModalProps, "visible"> & {
   visible: boolean;
+  setVisible: Function;
 };
 
 export const DatePicker = ({
-  visible = true,
+  visible = false,
+  setVisible,
   animationType = "slide",
   ...rest
 }: DatePickerProps) => {
-  const [modalVisible, setModalVisible] = useState(visible);
   const [date, setDate] = useState(new Date());
 
   const onClickCancel = () => {
-    setModalVisible(false);
+    setVisible(false);
     Alert.alert("취소!", "모달에서 취소버튼을 눌렀습니다");
   };
 
   const onClickOk = () => {
-    setModalVisible(false);
+    setVisible(false);
     Alert.alert(
       "확인!",
       `선택된 날짜는 ${dayjs(date).format("YYYY-MM-DD")}입니다`
@@ -41,9 +42,9 @@ export const DatePicker = ({
     <Modal
       animationType={animationType}
       transparent={true}
-      visible={modalVisible}
+      visible={visible}
       onRequestClose={() => {
-        setModalVisible(!modalVisible);
+        setVisible(!visible);
       }}
       {...rest}
     >
