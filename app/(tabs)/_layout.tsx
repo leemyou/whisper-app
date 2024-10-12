@@ -24,6 +24,10 @@ export default function TabLayout() {
         tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
         headerShown: false,
         tabBarShowLabel: false,
+        tabBarStyle: {
+          backgroundColor: Colors[colorScheme ?? "light"].background,
+          height: 55,
+        },
       }}
       initialRouteName="index"
     >

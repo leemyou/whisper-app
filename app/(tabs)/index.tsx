@@ -28,6 +28,7 @@ const HomeScreen = (props: HomeProps) => {
         imgDataArr={calendarImgData}
       />
     </View>
+
   );
 };
 
