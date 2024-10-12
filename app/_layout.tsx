@@ -6,6 +6,8 @@ import { useEffect } from "react";
 import "react-native-reanimated";
 import { useColorScheme } from "@/hooks/useColorScheme";
 import { DarkTheme, LightTheme } from "@/constants/Theme";
+import { RecoilRoot } from "recoil";
+import { DatePicker } from "@/components/datePickers/DatePicker";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -28,11 +30,13 @@ export default function RootLayout() {
   }
 
   return (
-    <ThemeProvider value={colorScheme === "dark" ? DarkTheme : LightTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
-    </ThemeProvider>
+    <RecoilRoot>
+      <ThemeProvider value={colorScheme === "dark" ? DarkTheme : LightTheme}>
+        <Stack>
+          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+          <Stack.Screen name="+not-found" />
+        </Stack>
+      </ThemeProvider>
+    </RecoilRoot>
   );
 }
