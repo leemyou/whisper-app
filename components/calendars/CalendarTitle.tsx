@@ -7,7 +7,7 @@ import {
   ViewStyle,
 } from "react-native";
 import { BasicTextInput } from "../inputs/BasicTextInput";
-import { Dayjs } from "dayjs";
+import dayjs, { Dayjs } from "dayjs";
 import IconArrow from "@/assets/images/icons/solar--alt-arrow-line-duotone.svg";
 import { Colors } from "@/constants/Colors";
 import useDatePicker from "@/hooks/useDatePicker";
@@ -23,9 +23,7 @@ export const CalendarTitle = ({
   setDate,
   customStyle,
 }: CalendarTitleProps) => {
-  // const { open, isDatePickerOpen } = useDatePicker("date");
-
-  // console.log(isDatePickerOpen);
+  const { open } = useDatePicker("month");
 
   const onPressPrev = () => {
     setDate(date.subtract(1, "month"));
@@ -34,7 +32,10 @@ export const CalendarTitle = ({
     setDate(date.add(1, "month"));
   };
   const onPressPicker = () => {
-    // open();
+    open({
+      isOpen: true,
+      callBack: (date?: Dayjs) => date && setDate(date),
+    });
   };
 
   return (

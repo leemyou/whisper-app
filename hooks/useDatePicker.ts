@@ -1,37 +1,64 @@
 // isOpen, modalType(date, month)를 props로 추가해준다
 
+import dayjs, { Dayjs } from "dayjs";
 import { useCallback } from "react";
 import { atom, useRecoilState } from "recoil";
 
 type pickerType = "date" | "month";
 
-const datePickerOpenAtom = atom({
-  key: "datePickerOpenAtom",
-  default: false,
-});
+type ModalType = {
+  isOpen: boolean;
+  callBack?: (date?: Dayjs) => any;
+};
 
-const monthPickerOpenAtom = atom({
-  key: "monthPickerOpenAtom",
-  default: false,
+export const datePickerAtom = atom<ModalType>({
+  key: "datePickerAtom",
+  default: {
+    isOpen: false,
+  },
+});
+export const monthPickerAtom = atom<ModalType>({
+  key: "monthPickerAtom",
+  default: {
+    isOpen: false,
+  },
 });
 
 const useDatePicker = (type: pickerType) => {
-  const [isDatePickerOpen, setIsDatePickerOpen] =
-    useRecoilState(datePickerOpenAtom);
-  const [isMonthPickerOpen, setIsMonthPickerOpen] =
-    useRecoilState(monthPickerOpenAtom);
+  const [datePickerState, setDatePickerState] = useRecoilState(datePickerAtom);
+  const [monthPickerState, setMonthPickerState] =
+    useRecoilState(monthPickerAtom);
 
-  const open = useCallback(() => {
-    type === "date" ? setIsDatePickerOpen(true) : setIsMonthPickerOpen(true);
-  }, [type, setIsDatePickerOpen, setIsMonthPickerOpen]);
+  const open = useCallback(
+    ({ callBack }: ModalType) => {
+      type === "date"
+        ? setDatePickerState({
+            isOpen: true,
+            callBack: callBack,
+          })
+        : setMonthPickerState({
+            isOpen: true,
+            callBack: callBack,
+          });
+    },
+    [type, setDatePickerState, setMonthPickerState]
+  );
 
   const close = useCallback(() => {
-    type === "date" ? setIsDatePickerOpen(false) : setIsMonthPickerOpen(false);
-  }, [type, setIsDatePickerOpen, setIsMonthPickerOpen]);
+    type === "date"
+      ? setDatePickerState((prev) => {
+          return { ...prev, isOpen: false };
+        })
+      : setMonthPickerState((prev) => {
+          return { ...prev, isOpen: false };
+        });
+  }, [type, setDatePickerState, setMonthPickerState]);
 
   return {
-    isDatePickerOpen,
-    isMonthPickerOpen,
+    datePickerVisible: datePickerState.isOpen,
+    monthPickerVisible: monthPickerState.isOpen,
+    datePickerState,
+    monthPickerState,
     open,
     close,
   };

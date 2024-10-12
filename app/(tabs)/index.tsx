@@ -1,12 +1,12 @@
+import { CalendarTitle } from "@/components/calendars/CalendarTitle";
 import { PictureCalender } from "@/components/calendars/PictureCalender";
+import { ThemeView } from "@/components/ThemeView";
 import dayjs from "dayjs";
-import React from "react";
-import { Alert, StyleSheet, View } from "react-native";
+import React, { useState } from "react";
+import { Alert, StyleSheet } from "react-native";
 
-type HomeProps = {};
-
-const HomeScreen = (props: HomeProps) => {
-  const calendarDate = dayjs("2024-10-10");
+const HomeScreen = () => {
+  const [calendarDate, setCalendarDate] = useState(dayjs("2024-10-10"));
 
   const calendarImgData = [
     { date: "2024-10-01", imgUrl: "@/assets/images/test.png" },
@@ -21,14 +21,18 @@ const HomeScreen = (props: HomeProps) => {
   };
 
   return (
-    <View style={homeStyle.main}>
+    <ThemeView style={homeStyle.main}>
+      <CalendarTitle
+        date={calendarDate}
+        setDate={setCalendarDate}
+        customStyle={{ marginBottom: 32 }}
+      />
       <PictureCalender
         date={calendarDate}
         onPressDay={onPressDate}
         imgDataArr={calendarImgData}
       />
-    </View>
-
+    </ThemeView>
   );
 };
 
@@ -36,7 +40,6 @@ export default HomeScreen;
 
 const homeStyle = StyleSheet.create({
   main: {
-    marginTop: 20,
-    marginHorizontal: 16,
+    marginTop: 40,
   },
 });

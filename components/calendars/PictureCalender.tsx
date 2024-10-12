@@ -3,6 +3,7 @@ import { Image, Pressable, StyleSheet, View } from "react-native";
 import type { Dayjs } from "dayjs";
 import { BasicTextInput } from "../inputs/BasicTextInput";
 import { getCalendarWithImages } from "@/utils/date";
+import dayjs from "dayjs";
 
 type PictureCalenderProps = {
   date: Dayjs;

@@ -8,6 +8,7 @@ import { useColorScheme } from "@/hooks/useColorScheme";
 import { DarkTheme, LightTheme } from "@/constants/Theme";
 import { RecoilRoot } from "recoil";
 import { DatePicker } from "@/components/datePickers/DatePicker";
+import { MonthYearPicker } from "@/components/datePickers/MonthPicker";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -36,6 +37,8 @@ export default function RootLayout() {
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           <Stack.Screen name="+not-found" />
         </Stack>
+        <DatePicker />
+        <MonthYearPicker />
       </ThemeProvider>
     </RecoilRoot>
   );

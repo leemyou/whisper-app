@@ -11,41 +11,31 @@ import RNDateTimePicker from "@react-native-community/datetimepicker";
 import { BasicTextInput } from "../inputs/BasicTextInput";
 import { Colors } from "@/constants/Colors";
 import dayjs from "dayjs";
+import useDatePicker from "@/hooks/useDatePicker";
 
-type DatePickerProps = Omit<ModalProps, "visible"> & {
-  visible: boolean;
-  setVisible: Function;
-};
+type DatePickerProps = Omit<ModalProps, "visible">;
 
 export const DatePicker = ({
-  visible = false,
-  setVisible,
   animationType = "slide",
   ...rest
 }: DatePickerProps) => {
+  const { close, datePickerVisible, datePickerState } = useDatePicker("date");
   const [date, setDate] = useState(new Date());
 
   const onClickCancel = () => {
-    setVisible(false);
-    Alert.alert("취소!", "모달에서 취소버튼을 눌렀습니다");
+    close();
   };
 
   const onClickOk = () => {
-    setVisible(false);
-    Alert.alert(
-      "확인!",
-      `선택된 날짜는 ${dayjs(date).format("YYYY-MM-DD")}입니다`
-    );
+    datePickerState.callBack && datePickerState.callBack(dayjs(date));
+    close();
   };
 
   return (
     <Modal
       animationType={animationType}
       transparent={true}
-      visible={visible}
-      onRequestClose={() => {
-        setVisible(!visible);
-      }}
+      visible={datePickerVisible}
       {...rest}
     >
       <View style={styles.container}>
