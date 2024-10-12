@@ -3,6 +3,7 @@ import { Image, Pressable, StyleSheet, View } from "react-native";
 import type { Dayjs } from "dayjs";
 import { BasicTextInput } from "../inputs/BasicTextInput";
 import { getCalendarWithImages } from "@/utils/date";
+import dayjs from "dayjs";
 
 type PictureCalenderProps = {
   date: Dayjs;
@@ -25,9 +26,13 @@ export const PictureCalender = ({
       <View style={pcCalenderStyle.weekDay}>
         {weekOfDay.map((value, index) => (
           <BasicTextInput
+            key={value}
             size="footnote"
             color={index === 0 ? "main" : index === 6 ? "blue" : "text"}
-            style={{ flex: 1, textAlign: "center" }}
+            style={{
+              flex: 1,
+              textAlign: "center",
+            }}
           >
             {value}
           </BasicTextInput>
@@ -36,12 +41,16 @@ export const PictureCalender = ({
 
       {/* 달력 View */}
       <View style={pcCalenderStyle.calenderContainer}>
-        {monthOfDays.map((week) => {
+        {monthOfDays.map((week, index) => {
           return (
-            <View style={pcCalenderStyle.calendarWeek}>
+            <View
+              style={pcCalenderStyle.calendarWeek}
+              key={`pc-calnedar-week-${index}`}
+            >
               {week.map((dateValue, dayIndex) => (
                 <Pressable
                   style={pcCalenderStyle.calendarDate}
+                  key={`pc-calnedar-day-${dayIndex}`}
                   onPress={() => {
                     if (dateValue.day !== null && onPressDay) {
                       onPressDay(dateValue.day);
@@ -89,7 +98,6 @@ const pcCalenderStyle = StyleSheet.create({
   weekDay: {
     flexDirection: "row",
     justifyContent: "space-between",
-    backgroundColor: "#f2f2f2",
     columnGap: 8,
     marginBottom: 8,
   },

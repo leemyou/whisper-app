@@ -1,6 +1,6 @@
 import { Colors } from "@/constants/Colors";
 import dayjs from "dayjs";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Alert,
   Modal,
@@ -12,21 +12,20 @@ import {
 import { Picker } from "react-native-wheel-pick";
 import { BasicTextInput } from "../inputs/BasicTextInput";
 import { getYearObjArr } from "@/utils/date";
+import useDatePicker from "@/hooks/useDatePicker";
 
-type MonthPickerProps = ModalProps & {
-  visible: boolean;
-  setVisible: Function;
-};
+type MonthPickerProps = ModalProps;
 
 export const MonthYearPicker = ({
   animationType = "slide",
-  visible,
-  setVisible,
   ...rest
 }: MonthPickerProps) => {
+  const { close, monthPickerVisible, monthPickerState } =
+    useDatePicker("month");
+
   const [date, setDate] = useState({
-    year: dayjs().year(),
-    month: dayjs().month(),
+    year: dayjs().get("y"),
+    month: dayjs().get("M") + 1,
   });
 
   const monthArr = [...Array(12)].map((_, i) => ({
@@ -35,22 +34,26 @@ export const MonthYearPicker = ({
   }));
 
   const onClickCancel = () => {
-    setVisible(false);
-    Alert.alert("취소!", "모달에서 취소버튼을 눌렀습니다");
+    close();
   };
 
   const onClickOk = () => {
-    setVisible(false);
-    Alert.alert("확인!", `선택된 날짜는 ${date.year + `-` + date.month}입니다`);
+    monthPickerState.callBack &&
+      monthPickerState.callBack(
+        dayjs()
+          .set("year", date.year)
+          .set("month", date.month - 1)
+      );
+    close();
   };
 
   return (
     <Modal
       animationType={animationType}
       transparent={true}
-      visible={visible}
+      visible={monthPickerVisible}
       onRequestClose={() => {
-        setVisible(!visible);
+        close();
       }}
       {...rest}
     >
