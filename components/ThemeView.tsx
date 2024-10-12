@@ -10,7 +10,6 @@ export const ThemeView = ({ style, ...rest }: ThemeViewProps) => {
 const baseStyles = StyleSheet.create({
   container: {
     flex: 1,
-    width: "100%",
     height: "auto",
     marginHorizontal: 16,
   },
