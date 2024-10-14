@@ -35,6 +35,27 @@ export default function RootLayout() {
       <ThemeProvider value={colorScheme === "dark" ? DarkTheme : LightTheme}>
         <Stack>
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+
+          {/* write stack */}
+          <Stack.Screen
+            name="select"
+            options={{
+              presentation: "modal",
+              gestureEnabled: false,
+              autoHideHomeIndicator: false,
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="write"
+            options={{
+              presentation: "modal",
+              gestureEnabled: false,
+              autoHideHomeIndicator: false,
+              headerShown: false,
+            }}
+          />
+
           <Stack.Screen name="+not-found" />
         </Stack>
         <DatePicker />
