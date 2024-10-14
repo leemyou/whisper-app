@@ -1,5 +1,11 @@
 import React from "react";
-import { StyleSheet, Text, type TextProps } from "react-native";
+import {
+  StyleProp,
+  StyleSheet,
+  Text,
+  TextStyle,
+  type TextProps,
+} from "react-native";
 import { useThemeColor } from "@/hooks/useThemeColor";
 import { Colors } from "@/constants/Colors";
 
@@ -7,6 +13,7 @@ export type BasicTextInputProps = TextProps & {
   size?: "caption" | "footnote" | "default" | "subTitle" | "title";
   color?: keyof typeof Colors.light & keyof typeof Colors.dark;
   weight?: "regular" | "bold" | "light";
+  textAlign?: TextStyle["textAlign"];
 };
 
 export const BasicTextInput = ({
@@ -14,6 +21,7 @@ export const BasicTextInput = ({
   color = "text",
   size = "default",
   weight = "regular",
+  textAlign = "auto",
   ...rest
 }: BasicTextInputProps) => {
   const textColor = useThemeColor(color);
@@ -21,7 +29,7 @@ export const BasicTextInput = ({
   return (
     <Text
       style={[
-        { color: textColor },
+        { color: textColor, textAlign: textAlign },
         size === "default" ? textStyle.default : undefined,
         size === "caption" ? textStyle.caption : undefined,
         size === "footnote" ? textStyle.footnote : undefined,
