@@ -23,7 +23,7 @@ export const Header = ({
   const router = useRouter();
 
   const onBackPress = () => {
-    onPrev ? onPrev : router.back();
+    onPrev ? onPrev() : router.back();
   };
 
   const onForwardPress = () => {
