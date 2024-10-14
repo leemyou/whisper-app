@@ -7,9 +7,8 @@ import { Colors } from "@/constants/Colors";
 import { CalendarTitle } from "@/components/calendars/CalendarTitle";
 import { PictureCalender } from "@/components/calendars/PictureCalender";
 import { ThemeView } from "@/components/ThemeView";
-import { BasicText } from "@/components/inputs/BasicText";
 
-import { Link, useRouter } from "expo-router";
+import { useRouter } from "expo-router";
 import dayjs from "dayjs";
 
 const HomeScreen = () => {
@@ -33,26 +32,24 @@ const HomeScreen = () => {
   };
 
   return (
-    <ThemeView style={homeStyle.main}>
-      <CalendarTitle
-        date={calendarDate}
-        setDate={setCalendarDate}
-        customStyle={{ marginBottom: 32 }}
-      />
-      <PictureCalender
-        date={calendarDate}
-        onPressDay={onPressDate}
-        imgDataArr={calendarImgData}
-      />
+    <>
+      <ThemeView style={homeStyle.main}>
+        <CalendarTitle
+          date={calendarDate}
+          setDate={setCalendarDate}
+          customStyle={{ marginBottom: 32 }}
+        />
+        <PictureCalender
+          date={calendarDate}
+          onPressDay={onPressDate}
+          imgDataArr={calendarImgData}
+        />
 
-      <Link href={"/select"}>
-        <BasicText>test</BasicText>
-      </Link>
-
-      <Pressable onPress={onPressAdd} style={homeStyle.addBtn}>
-        <AddIcon width={32} height={32} color={Colors.light.background} />
-      </Pressable>
-    </ThemeView>
+        <Pressable onPress={onPressAdd} style={homeStyle.addBtn}>
+          <AddIcon width={32} height={32} color={Colors.light.background} />
+        </Pressable>
+      </ThemeView>
+    </>
   );
 };
 
