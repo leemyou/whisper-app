@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 import { Pressable, PressableProps, StyleSheet } from "react-native";
-import { BasicTextInput } from "../inputs/BasicTextInput";
+import { BasicText } from "../inputs/BasicText";
 import { useThemeColor } from "@/hooks/useThemeColor";
 
 type TextButtonProps = Omit<PressableProps, "children"> & {
@@ -20,7 +20,7 @@ export const TextButton = ({
       disabled={disabled}
       {...rest}
     >
-      <BasicTextInput color={"background"}>{children}</BasicTextInput>
+      <BasicText color={"background"}>{children}</BasicText>
     </Pressable>
   );
 };

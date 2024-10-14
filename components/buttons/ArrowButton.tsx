@@ -1,6 +1,6 @@
 import React from "react";
 import { Image, Pressable, PressableProps, StyleSheet } from "react-native";
-import { BasicTextInput } from "../inputs/BasicTextInput";
+import { BasicText } from "../inputs/BasicText";
 import { useThemeColor } from "@/hooks/useThemeColor";
 
 type ArrowButtonProps = PressableProps & { title: string };
@@ -15,7 +15,7 @@ export const ArrowButton = ({ title, ...rest }: ArrowButtonProps) => {
         style={[{ backgroundColor: background }, arrowBtnStyle.default]}
         {...rest}
       >
-        <BasicTextInput>{title}</BasicTextInput>
+        <BasicText>{title}</BasicText>
         <Image
           source={require("@/assets/images/icons/icons-arrow.png")}
           style={[arrowBtnStyle.icon, { tintColor: arrowColor }]}

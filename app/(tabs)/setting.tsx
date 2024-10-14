@@ -1,10 +1,10 @@
 import React from "react";
-import { BasicTextInput } from "@/components/inputs/BasicTextInput";
+import { BasicText } from "@/components/inputs/BasicText";
 
 type Props = {};
 
 const SettingScreen = (props: Props) => {
-  return <BasicTextInput>Setting</BasicTextInput>;
+  return <BasicText>Setting</BasicText>;
 };
 
 export default SettingScreen;

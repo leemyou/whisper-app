@@ -1,7 +1,7 @@
 import React from "react";
 import { Pressable, StyleSheet, View } from "react-native";
 
-import { BasicTextInput } from "./inputs/BasicTextInput";
+import { BasicText } from "./inputs/BasicText";
 
 import { useRouter } from "expo-router";
 
@@ -33,22 +33,22 @@ export const Header = ({
   return (
     <View style={headerS.main}>
       <Pressable onPress={onBackPress} style={headerS.textWrapper}>
-        <BasicTextInput color="grey600" size="footnote" textAlign="center">
+        <BasicText color="grey600" size="footnote" textAlign="center">
           {prevText}
-        </BasicTextInput>
+        </BasicText>
       </Pressable>
       <Pressable
         onPress={onForwardPress}
         disabled={disableNext}
         style={headerS.textWrapper}
       >
-        <BasicTextInput
+        <BasicText
           color={disableNext ? "grey100" : "main"}
           size="footnote"
           textAlign="center"
         >
           {nextText}
-        </BasicTextInput>
+        </BasicText>
       </Pressable>
     </View>
   );

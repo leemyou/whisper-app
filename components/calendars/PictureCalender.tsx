@@ -1,7 +1,7 @@
 import React from "react";
 import { Image, Pressable, StyleSheet, View } from "react-native";
 import type { Dayjs } from "dayjs";
-import { BasicTextInput } from "../inputs/BasicTextInput";
+import { BasicText } from "../inputs/BasicText";
 import { getCalendarWithImages } from "@/utils/date";
 import dayjs from "dayjs";
 
@@ -25,7 +25,7 @@ export const PictureCalender = ({
       {/* 요일 View */}
       <View style={pcCalenderStyle.weekDay}>
         {weekOfDay.map((value, index) => (
-          <BasicTextInput
+          <BasicText
             key={value}
             size="footnote"
             color={index === 0 ? "main" : index === 6 ? "blue" : "text"}
@@ -35,7 +35,7 @@ export const PictureCalender = ({
             }}
           >
             {value}
-          </BasicTextInput>
+          </BasicText>
         ))}
       </View>
 
@@ -67,7 +67,7 @@ export const PictureCalender = ({
                     />
                   )}
 
-                  <BasicTextInput
+                  <BasicText
                     weight="light"
                     color={
                       dayIndex % 7 === 0
@@ -82,7 +82,7 @@ export const PictureCalender = ({
                     ]}
                   >
                     {dateValue.day}
-                  </BasicTextInput>
+                  </BasicText>
                 </Pressable>
               ))}
             </View>

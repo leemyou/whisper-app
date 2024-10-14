@@ -9,21 +9,21 @@ import {
 import { useThemeColor } from "@/hooks/useThemeColor";
 import { Colors } from "@/constants/Colors";
 
-export type BasicTextInputProps = TextProps & {
+export type BasicTextProps = TextProps & {
   size?: "caption" | "footnote" | "default" | "subTitle" | "title";
   color?: keyof typeof Colors.light & keyof typeof Colors.dark;
   weight?: "regular" | "bold" | "light";
   textAlign?: TextStyle["textAlign"];
 };
 
-export const BasicTextInput = ({
+export const BasicText = ({
   style,
   color = "text",
   size = "default",
   weight = "regular",
   textAlign = "auto",
   ...rest
-}: BasicTextInputProps) => {
+}: BasicTextProps) => {
   const textColor = useThemeColor(color);
 
   return (

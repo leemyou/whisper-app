@@ -6,7 +6,7 @@ import {
   View,
   ViewStyle,
 } from "react-native";
-import { BasicTextInput } from "../inputs/BasicTextInput";
+import { BasicText } from "../inputs/BasicText";
 import dayjs, { Dayjs } from "dayjs";
 import IconArrow from "@/assets/images/icons/solar--alt-arrow-line-duotone.svg";
 import { Colors } from "@/constants/Colors";
@@ -44,12 +44,12 @@ export const CalendarTitle = ({
         <IconArrow width={36} height={36} color={Colors.light.text} />
       </Pressable>
       <Pressable style={styles.textWrapper} onPress={onPressPicker}>
-        <BasicTextInput style={styles.text} size="default">
+        <BasicText style={styles.text} size="default">
           {date.format("YYYY")}
-        </BasicTextInput>
-        <BasicTextInput style={styles.text} size="title">
+        </BasicText>
+        <BasicText style={styles.text} size="title">
           {date.format("MMMM")}
-        </BasicTextInput>
+        </BasicText>
       </Pressable>
       <Pressable
         style={[styles.arrow, { transform: [{ rotate: "180deg" }] }]}

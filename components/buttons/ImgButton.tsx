@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import ImgIcon from "@/assets/images/icons/solar--gallery-round-linear.svg";
 import { Colors } from "@/constants/Colors";
-import { BasicTextInput } from "../inputs/BasicTextInput";
+import { BasicText } from "../inputs/BasicText";
 
 type ImgButtonProps = Omit<PressableProps, "style"> & {
   style?: StyleProp<ViewProps>;
@@ -18,9 +18,9 @@ export const ImgButton = ({ style, ...rest }: ImgButtonProps) => {
   return (
     <Pressable style={[IbStyle.btn, style]} {...rest}>
       <ImgIcon width={52} height={52} color={Colors.light.sub} />
-      <BasicTextInput color="sub" weight="bold" size="subTitle">
+      <BasicText color="sub" weight="bold" size="subTitle">
         사진을 추가해주세요.
-      </BasicTextInput>
+      </BasicText>
     </Pressable>
   );
 };
