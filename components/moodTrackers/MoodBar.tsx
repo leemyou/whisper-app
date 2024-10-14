@@ -12,7 +12,6 @@ export const MoodBar = ({ count = 0 }: MoodBarProps) => {
     <View style={moodBarWrapS.barWrap}>
       {[...Array(count)].map((_, index) => {
         const randomColor = generateRandomPastelHexColor(); // 각각의 MoodBar에 대한 개별 색상 생성
-        console.log(randomColor);
         return (
           <View
             style={[moodBarS.barElement, { backgroundColor: randomColor }]}
