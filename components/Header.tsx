@@ -8,26 +8,26 @@ import { useRouter } from "expo-router";
 type HeaderProps = {
   prevText?: string;
   nextText?: string;
-  onNextPress: () => void;
-  onPrevPress?: () => void;
+  onNext: () => void;
+  onPrev?: () => void;
   disableNext?: boolean;
 };
 
 export const Header = ({
   nextText = "다음",
   prevText = "뒤로",
-  onNextPress,
-  onPrevPress,
+  onNext,
+  onPrev,
   disableNext = false,
 }: HeaderProps) => {
   const router = useRouter();
 
   const onBackPress = () => {
-    onPrevPress ? onPrevPress : router.back();
+    onPrev ? onPrev : router.back();
   };
 
   const onForwardPress = () => {
-    onNextPress && onNextPress();
+    onNext && onNext();
   };
 
   return (
