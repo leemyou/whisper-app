@@ -9,6 +9,8 @@ import { DarkTheme, LightTheme } from "@/constants/Theme";
 import { RecoilRoot } from "recoil";
 import { DatePicker } from "@/components/datePickers/DatePicker";
 import { MonthYearPicker } from "@/components/datePickers/MonthPicker";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -32,14 +34,41 @@ export default function RootLayout() {
 
   return (
     <RecoilRoot>
-      <ThemeProvider value={colorScheme === "dark" ? DarkTheme : LightTheme}>
-        <Stack>
-          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-          <Stack.Screen name="+not-found" />
-        </Stack>
-        <DatePicker />
-        <MonthYearPicker />
-      </ThemeProvider>
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <BottomSheetModalProvider>
+          <ThemeProvider
+            value={colorScheme === "dark" ? DarkTheme : LightTheme}
+          >
+            <Stack>
+              <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+
+              {/* write stack */}
+              <Stack.Screen
+                name="select"
+                options={{
+                  presentation: "modal",
+                  gestureEnabled: false,
+                  // autoHideHomeIndicator: false,
+                  headerShown: false,
+                }}
+              />
+              <Stack.Screen
+                name="write"
+                options={{
+                  presentation: "modal",
+                  gestureEnabled: false,
+                  // autoHideHomeIndicator: false,
+                  headerShown: false,
+                }}
+              />
+
+              <Stack.Screen name="+not-found" />
+            </Stack>
+            <DatePicker />
+            <MonthYearPicker />
+          </ThemeProvider>
+        </BottomSheetModalProvider>
+      </GestureHandlerRootView>
     </RecoilRoot>
   );
 }

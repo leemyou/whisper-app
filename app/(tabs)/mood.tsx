@@ -1,10 +1,10 @@
-import { BasicTextInput } from "@/components/inputs/BasicTextInput";
+import { BasicText } from "@/components/inputs/BasicText";
 import React from "react";
 
 type Props = {};
 
 const MoodScreen = (props: Props) => {
-  return <BasicTextInput>Mood</BasicTextInput>;
+  return <BasicText>Mood</BasicText>;
 };
 
 export default MoodScreen;

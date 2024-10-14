@@ -1,10 +1,10 @@
-import { BasicTextInput } from "@/components/inputs/BasicTextInput";
+import { BasicText } from "@/components/inputs/BasicText";
 import React from "react";
 
 type Props = {};
 
 const SearchScreen = (props: Props) => {
-  return <BasicTextInput>Search</BasicTextInput>;
+  return <BasicText>Search</BasicText>;
 };
 
 export default SearchScreen;

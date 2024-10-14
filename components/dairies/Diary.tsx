@@ -1,6 +1,6 @@
 import React from "react";
 import { Image, StyleSheet, View } from "react-native";
-import { BasicTextInput } from "../inputs/BasicTextInput";
+import { BasicText } from "../inputs/BasicText";
 import dayjs from "dayjs";
 import { TDiary } from "@/constants/Diary";
 import { Colors } from "@/constants/Colors";
@@ -23,20 +23,12 @@ export const Diary = ({
     <View style={dStyle.mainContainer}>
       <View style={dStyle.top}>
         <View>
-          <BasicTextInput
-            size="caption"
-            color="grey400"
-            style={{ lineHeight: 16 }}
-          >
+          <BasicText size="caption" color="grey400" style={{ lineHeight: 16 }}>
             {dayjs(date).format("dddd")}
-          </BasicTextInput>
-          <BasicTextInput
-            size="caption"
-            color="grey400"
-            style={{ lineHeight: 16 }}
-          >
+          </BasicText>
+          <BasicText size="caption" color="grey400" style={{ lineHeight: 16 }}>
             {dayjs(date).format("YYYY.MM.DD")}
-          </BasicTextInput>
+          </BasicText>
         </View>
 
         <View style={dStyle.topMood}>
@@ -46,7 +38,7 @@ export const Diary = ({
       </View>
 
       <View style={dStyle.middle}>
-        <BasicTextInput size="subTitle">{title}</BasicTextInput>
+        <BasicText size="subTitle">{title}</BasicText>
         <View style={dStyle.middleImgWrapper}>
           <Image
             source={require("@/assets/images/test.png")}
@@ -56,7 +48,7 @@ export const Diary = ({
         </View>
       </View>
       <View style={dStyle.bottom}>
-        <BasicTextInput>{content}</BasicTextInput>
+        <BasicText>{content}</BasicText>
       </View>
     </View>
   );

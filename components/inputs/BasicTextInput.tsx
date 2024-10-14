@@ -1,27 +1,21 @@
 import React from "react";
-import { StyleSheet, Text, type TextProps } from "react-native";
-import { useThemeColor } from "@/hooks/useThemeColor";
-import { Colors } from "@/constants/Colors";
+import { StyleSheet, TextInput, TextInputProps } from "react-native";
+import { BasicTextProps, textStyle } from "./BasicText";
 
-export type BasicTextInputProps = TextProps & {
-  size?: "caption" | "footnote" | "default" | "subTitle" | "title";
-  color?: keyof typeof Colors.light & keyof typeof Colors.dark;
-  weight?: "regular" | "bold" | "light";
-};
+type BasicTextInputProps = TextInputProps & BasicTextProps;
 
 export const BasicTextInput = ({
   style,
   color = "text",
   size = "default",
   weight = "regular",
+  textAlign = "left",
+  placeholder = "내용을 입력해주세요",
   ...rest
 }: BasicTextInputProps) => {
-  const textColor = useThemeColor(color);
-
   return (
-    <Text
+    <TextInput
       style={[
-        { color: textColor },
         size === "default" ? textStyle.default : undefined,
         size === "caption" ? textStyle.caption : undefined,
         size === "footnote" ? textStyle.footnote : undefined,
@@ -30,46 +24,17 @@ export const BasicTextInput = ({
         weight === "regular" ? textStyle.fontRegular : undefined,
         weight === "light" ? textStyle.fontLight : undefined,
         weight === "bold" ? textStyle.fontBold : undefined,
-        style,
+        inputS.input,
       ]}
+      placeholder={placeholder}
       {...rest}
     />
   );
 };
 
-const textStyle = StyleSheet.create({
-  default: {
-    fontSize: 16,
-    lineHeight: 24,
-  },
-  defaultBold: {
-    fontSize: 16,
-    lineHeight: 24,
-  },
-  caption: {
-    fontSize: 12,
-    lineHeight: 24,
-  },
-  footnote: {
-    fontSize: 14,
-    lineHeight: 24,
-  },
-  subTitle: {
-    fontSize: 24,
-    lineHeight: 24,
-  },
-  title: {
-    fontSize: 28,
-    lineHeight: 32,
-  },
-
-  fontRegular: {
-    fontFamily: "NanumSquare",
-  },
-  fontBold: {
-    fontFamily: "NanumSquareBold",
-  },
-  fontLight: {
-    fontFamily: "NanumSquareLight",
+const inputS = StyleSheet.create({
+  input: {
+    paddingVertical: 6,
+    lineHeight: 0,
   },
 });

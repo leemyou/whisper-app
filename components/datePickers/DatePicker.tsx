@@ -8,7 +8,7 @@ import {
   View,
 } from "react-native";
 import RNDateTimePicker from "@react-native-community/datetimepicker";
-import { BasicTextInput } from "../inputs/BasicTextInput";
+import { BasicText } from "../inputs/BasicText";
 import { Colors } from "@/constants/Colors";
 import dayjs from "dayjs";
 import useDatePicker from "@/hooks/useDatePicker";
@@ -42,14 +42,14 @@ export const DatePicker = ({
         <View style={styles.modal}>
           <View style={styles.modalTop}>
             <Pressable style={styles.modalBtn} onPress={onClickCancel}>
-              <BasicTextInput color="grey600" weight="bold">
+              <BasicText color="grey600" weight="bold">
                 취소
-              </BasicTextInput>
+              </BasicText>
             </Pressable>
             <Pressable style={styles.modalBtn} onPress={onClickOk}>
-              <BasicTextInput color="main" weight="bold">
+              <BasicText color="main" weight="bold">
                 확인
-              </BasicTextInput>
+              </BasicText>
             </Pressable>
           </View>
           <RNDateTimePicker

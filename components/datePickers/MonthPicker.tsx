@@ -10,7 +10,7 @@ import {
   View,
 } from "react-native";
 import { Picker } from "react-native-wheel-pick";
-import { BasicTextInput } from "../inputs/BasicTextInput";
+import { BasicText } from "../inputs/BasicText";
 import { getYearObjArr } from "@/utils/date";
 import useDatePicker from "@/hooks/useDatePicker";
 
@@ -61,14 +61,14 @@ export const MonthYearPicker = ({
         <View style={style.modal}>
           <View style={style.modalTop}>
             <Pressable style={style.modalBtn} onPress={onClickCancel}>
-              <BasicTextInput color="grey600" weight="bold">
+              <BasicText color="grey600" weight="bold">
                 취소
-              </BasicTextInput>
+              </BasicText>
             </Pressable>
             <Pressable style={style.modalBtn} onPress={onClickOk}>
-              <BasicTextInput color="main" weight="bold">
+              <BasicText color="main" weight="bold">
                 확인
-              </BasicTextInput>
+              </BasicText>
             </Pressable>
           </View>
 
