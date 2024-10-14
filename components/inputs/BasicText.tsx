@@ -9,12 +9,14 @@ import {
 import { useThemeColor } from "@/hooks/useThemeColor";
 import { Colors } from "@/constants/Colors";
 
-export type BasicTextProps = TextProps & {
+export type BasicTextProps = {
   size?: "caption" | "footnote" | "default" | "subTitle" | "title";
   color?: keyof typeof Colors.light & keyof typeof Colors.dark;
   weight?: "regular" | "bold" | "light";
   textAlign?: TextStyle["textAlign"];
 };
+
+type BTextProps = TextProps & BasicTextProps;
 
 export const BasicText = ({
   style,
@@ -23,7 +25,7 @@ export const BasicText = ({
   weight = "regular",
   textAlign = "auto",
   ...rest
-}: BasicTextProps) => {
+}: BTextProps) => {
   const textColor = useThemeColor(color);
 
   return (
@@ -45,7 +47,7 @@ export const BasicText = ({
   );
 };
 
-const textStyle = StyleSheet.create({
+export const textStyle = StyleSheet.create({
   default: {
     fontSize: 16,
     lineHeight: 24,
