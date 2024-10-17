@@ -14,6 +14,8 @@ import Search from "@/assets/images/icons/solar--minimalistic-magnifer-linear.sv
 import SearchFocus from "@/assets/images/icons/solar--minimalistic-magnifer-bold.svg";
 import Setting from "@/assets/images/icons/solar--settings-outline.svg";
 import SettingFocus from "@/assets/images/icons/solar--settings-bold.svg";
+import { Header } from "@/components/Header";
+import { View } from "react-native";
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -77,6 +79,16 @@ export default function TabLayout() {
               <Search color={color} width={28} height={28} />
             );
           },
+          headerShown: true,
+          headerBackground: () => {
+            undefined;
+          },
+          headerTitle: "일기찾기",
+          headerTitleStyle: {
+            // color: Colors[colorScheme ?? "light"].text,
+            fontFamily: "NanumSquare",
+            fontSize: 16,
+          },
         }}
       />
       <Tabs.Screen
@@ -88,6 +100,16 @@ export default function TabLayout() {
             ) : (
               <Setting color={color} width={28} height={28} />
             );
+          },
+          headerShown: true,
+          headerBackground: () => {
+            undefined;
+          },
+          headerTitle: "설정",
+          headerTitleStyle: {
+            // color: Colors[colorScheme ?? "light"].text,
+            fontFamily: "NanumSquare",
+            fontSize: 16,
           },
         }}
       />

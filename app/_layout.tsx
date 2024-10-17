@@ -7,8 +7,8 @@ import "react-native-reanimated";
 import { useColorScheme } from "@/hooks/useColorScheme";
 import { DarkTheme, LightTheme } from "@/constants/Theme";
 import { RecoilRoot } from "recoil";
-import { DatePicker } from "@/components/datePickers/DatePicker";
-import { MonthYearPicker } from "@/components/datePickers/MonthPicker";
+import { DatePicker } from "@/components/Pickers/DatePicker";
+import { MonthYearPicker } from "@/components/Pickers/MonthPicker";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 
